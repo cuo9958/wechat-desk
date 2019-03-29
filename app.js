@@ -1,5 +1,6 @@
 /**
  * https://github.com/Chatie/wechaty
+ * https://electronjs.org/docs
  */
 const Wechaty = require('wechaty').Wechaty;
 // import { FileBox } from 'file-box'
