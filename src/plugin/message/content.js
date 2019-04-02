@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import { Input, Button } from 'antd';
+import Msg from './msg';
 
 export default class extends React.PureComponent {
 
@@ -16,7 +17,7 @@ export default class extends React.PureComponent {
             <div className="content_msg">
                 <div className="scroll" ref="scroll">
                     {this.state.list.map((item, index) => <div key={index}>
-                        {item}
+                        <Msg txt={item} />
                     </div>)}
                 </div>
             </div>

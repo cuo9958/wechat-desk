@@ -121,12 +121,35 @@
 
 #content .content_msg {
     height: 440px;
+    padding: 10px 10px;
     overflow: hidden;
 }
 
 #content .content_msg .scroll {
     overflow-y: scroll;
     height: 440px;
+}
+
+/*滚动条样式*/
+#content .content_msg .scroll::-webkit-scrollbar {
+    /*滚动条整体样式*/
+    width: 4px;
+    /*高宽分别对应横竖滚动条的尺寸*/
+    height: 4px;
+}
+
+#content .content_msg .scroll::-webkit-scrollbar-thumb {
+    /*滚动条里面小方块*/
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.2);
+}
+
+#content .content_msg .scroll::-webkit-scrollbar-track {
+    /*滚动条里面轨道*/
+    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    border-radius: 0;
+    background: rgba(0, 0, 0, 0.1);
 }
 
 #content .content_entry {
@@ -153,4 +176,37 @@
     border-radius: 0;
     border: none;
     background: #ddd;
+}
+
+.msg {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.msg .headimg {
+    width: 30px;
+    height: 30px;
+}
+
+.msg .headimg img {
+    width: 30px;
+    height: 30px;
+    border-radius: 3px;
+}
+
+.msg .content {}
+
+.msg .nickname {
+    color: #a9a9a9;
+    font-size: 10px;
+    padding-left: 5px;
+}
+
+.msg .txt {
+    margin-left: 5px;
+    padding: 2px 5px;
+    background: #fff;
+    border-radius: 4px;
+    font-size: 10px;
+    color: #333;
 }
