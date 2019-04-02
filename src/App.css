@@ -121,13 +121,13 @@
 
 #content .content_msg {
     height: 440px;
-    padding: 10px 10px;
     overflow: hidden;
 }
 
 #content .content_msg .scroll {
     overflow-y: scroll;
     height: 430px;
+    padding: 10px 10px;
 }
 
 /*滚动条样式*/
@@ -213,4 +213,11 @@
     font-size: 12px;
     color: #333;
     max-width: 260px;
+}
+
+#message_setting {
+    height: 540px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

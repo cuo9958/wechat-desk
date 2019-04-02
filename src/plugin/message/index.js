@@ -1,15 +1,30 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Button } from 'antd';
 import Content from './content';
+import Setting from './setting';
 
 export default class extends React.PureComponent {
+    constructor(props) {
+        super(props);
+        this.state = {
+            iset: false,
+        }
+    }
+
     render() {
         return <div id="message">
             <header className="header">
                 产品技术中心群(288)
-                <Button icon="setting"></Button>
+                <Button onClick={this.setting.bind(this)} icon="setting"></Button>
             </header>
-            <Content />
+            {!this.state.iset && <Content />}
+            {this.state.iset && <Setting />}
         </div>
+    }
+
+    setting() {
+        this.setState({
+            iset: !this.state.iset
+        });
     }
 }

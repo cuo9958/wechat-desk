@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Input, Button } from 'antd';
 import Msg from './msg';
 
@@ -23,7 +23,7 @@ export default class extends React.PureComponent {
             </div>
             <div className="content_entry">
                 <Input.TextArea value={this.state.txts} className="txts" ref="txts" onPressEnter={this.entry.bind(this)} onChange={this.onChange.bind(this)}></Input.TextArea>
-                <Button onClick={this.entry.bind(this)} className="enter">Enter</Button>
+                {/* <Button onClick={this.entry.bind(this)} className="enter">Enter</Button> */}
             </div>
         </div>
     }
@@ -36,6 +36,7 @@ export default class extends React.PureComponent {
     entry(e) {
         e.stopPropagation();
         e.preventDefault();
+        if (this.state.txts == '') return;
         this.setState({
             list: this.state.list.concat(this.state.txts),
             txts: ''

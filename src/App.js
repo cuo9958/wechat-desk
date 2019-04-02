@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import './App.css';
-import { Button } from 'antd';
 
 import Loading from './plugin/loading';
 import Scan from './plugin/scan';
