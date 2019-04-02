@@ -31,9 +31,11 @@ class App extends Component {
             this.setState({ loading: false });
         })
         window.ipc.on('scan', (event, arg) => {
-            console.log(arg)
             this.setState({ qrcode: arg });
-        })
+        });
+        window.ipc.on('login', (event, arg) => {
+            this.setState({ qrcode: '' });
+        });
     }
 
     click() {

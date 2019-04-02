@@ -10,7 +10,7 @@ module.exports = class {
         this.ready();
     }
 
-
+    //启动
     ready() {
         ipcMain.on('test', this.test.bind(this));
         this.webContents.send('ready');

@@ -31,6 +31,7 @@ module.exports = class {
             puppet: 'wechaty-puppet-wechat4u'
         });
         this.bot.on('scan', this.scan.bind(this));
+        this.bot.on('login', this.login.bind(this));
 
         this.bot.start();
         console.log("初始化", this.msg.name);
@@ -40,9 +41,13 @@ module.exports = class {
     test(args) {
         console.log("消息", args)
     }
-
+    //扫一扫
     scan(qrcode, status) {
         console.log(`Scan QR Code to login: ${status}\nhttps://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(qrcode)}`);
         this.msg.send("scan", qrcode)
+    }
+    //登录成功
+    login() {
+        this.msg.send("login")
     }
 }
