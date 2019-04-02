@@ -34,22 +34,29 @@ class App extends Component {
     }
 
     componentDidMount() {
-        // window.ipc.on('ready', () => {
-        //     console.log("加载结束")
-        //     this.setState({ loading: false });
-        // })
-        // window.ipc.on('scan', (event, arg) => {
-        //     this.setState({ qrcode: arg });
-        // });
-        // window.ipc.on('login', (event, arg) => {
-        //     this.setState({ qrcode: '' });
-        // });
-        // window.ipc.on('message', (event, arg) => {
-        //     console.log("消息", arg)
-        // });
-        // window.ipc.on('rooms', (event, arg) => {
-        //     console.log("房间", arg)
-        // });
+        window.ipc.on('ready', () => {
+            console.log("加载结束")
+            this.setState({ loading: false });
+        })
+        window.ipc.on('scan', (event, arg) => {
+            this.setState({ qrcode: arg });
+        });
+        window.ipc.on('login', (event, arg) => {
+            this.setState({ qrcode: '' });
+        });
+        window.ipc.on('logout', (event, arg) => {
+            console.log("登出")
+        });
+        window.ipc.on('message', (event, arg) => {
+            console.log("消息", arg)
+        });
+        window.ipc.on('rooms', (event, arg) => {
+            console.log("房间", arg)
+            this.setState({ list: arg });
+        });
+        setInterval(() => {
+            window.ipc.send('rooms');
+        }, 5000);
     }
 
     click() {

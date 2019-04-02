@@ -23,12 +23,11 @@ module.exports = class {
         this.bot.on('scan', this.scan.bind(this));
         this.bot.on('login', this.login.bind(this));
         this.bot.on('message', this.message.bind(this));
+        this.bot.on('logout', this.logout.bind(this));
 
         ipcMain.on('rooms', this.rooms.bind(this));
 
         await this.bot.start();
-
-        // await this.bot.Room.sync();
 
         this.rooms();
         console.log("初始化", this.msg.name);
@@ -50,6 +49,9 @@ module.exports = class {
     //登录成功
     login() {
         this.msg.send("login")
+    }
+    logout(){
+        this.msg.send("logout")
     }
 
     //消息
