@@ -20,15 +20,29 @@ module.exports = class {
     constructor(win) {
         this.win = win;
         this.msg = win.msg;
+        this.bot = null;
         this.ready();
     }
 
     ready() {
+        this.bot = new Wechaty({
+            name: '微信机器人',
+            profile: 'wechat',
+            puppet: 'wechaty-puppet-wechat4u'
+        });
+        this.bot.on('scan', this.scan.bind(this));
+
+        this.bot.start();
         console.log("初始化", this.msg.name);
         // this.msg.test("adw", "adw222")
     }
 
     test(args) {
         console.log("消息", args)
+    }
+
+    scan(qrcode, status) {
+        console.log(`Scan QR Code to login: ${status}\nhttps://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(qrcode)}`);
+        this.msg.send("scan", qrcode)
     }
 }

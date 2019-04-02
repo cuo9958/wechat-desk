@@ -3,20 +3,36 @@ import './App.css';
 import { Button, Spin } from 'antd';
 
 import Loading from './plugin/loading';
+import Scan from './plugin/scan';
 
 class App extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            loading: true,
+            qrcode: ''
+        }
+    }
+
     render() {
         return (
             <div className="App">
-                <Loading />
+                {this.state.loading && <Loading />}
+                <Scan qrcode={this.state.qrcode} />
                 <Button onClick={this.click.bind(this)}>ateadw</Button>
             </div>
         );
     }
 
     componentDidMount() {
-        window.ipc.on('window.ready', (event, arg) => {
-            console.log(arg) // prints "pong"
+        window.ipc.on('ready', () => {
+            console.log("加载结束")
+            this.setState({ loading: false });
+        })
+        window.ipc.on('scan', (event, arg) => {
+            console.log(arg)
+            this.setState({ qrcode: arg });
         })
     }
 

@@ -13,7 +13,7 @@ module.exports = class {
 
     ready() {
         ipcMain.on('test', this.test.bind(this));
-        this.webContents.send('window.ready', 'whoooooooh!')
+        this.webContents.send('ready');
     }
 
     test(event, args) {
@@ -21,5 +21,9 @@ module.exports = class {
         // event.sender.send('asynchronous-reply', 'pong')
         // event.returnValue = 'pong'
         this.win.bot.test();
+    }
+
+    send(key, args) {
+        this.webContents.send(key, args);
     }
 }
