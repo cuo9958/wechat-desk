@@ -28,7 +28,7 @@ module.exports = class {
 
         await this.bot.start();
 
-        await this.bot.Room.sync();
+        // await this.bot.Room.sync();
 
         this.rooms();
         console.log("初始化", this.msg.name);
