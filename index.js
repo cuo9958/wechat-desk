@@ -25,7 +25,8 @@ function createWindow() {
     })
 
     // 然后加载应用的 index.html。
-    win.loadFile('view/index.html')
+    // win.loadFile('view/index.html')
+    win.loadURL('http://127.0.0.1:3000')
 
     // 打开开发者工具
     win.webContents.openDevTools()
@@ -38,7 +39,8 @@ function createWindow() {
         // 取消引用 window 对象，如果你的应用支持多窗口的话，
         // 通常会把多个 window 对象存放在一个数组里面，
         // 与此同时，你应该删除相应的元素。
-        win = null
+        win = null;
+        app.quit();
     })
 }
 
