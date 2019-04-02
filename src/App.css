@@ -127,7 +127,7 @@
 
 #content .content_msg .scroll {
     overflow-y: scroll;
-    height: 440px;
+    height: 430px;
 }
 
 /*滚动条样式*/
@@ -181,6 +181,7 @@
 .msg {
     display: flex;
     justify-content: flex-start;
+    margin: 10px 0;
 }
 
 .msg .headimg {
@@ -194,7 +195,9 @@
     border-radius: 3px;
 }
 
-.msg .content {}
+.msg .content {
+    margin-left: 2px;
+}
 
 .msg .nickname {
     color: #a9a9a9;
@@ -206,7 +209,8 @@
     margin-left: 5px;
     padding: 2px 5px;
     background: #fff;
-    border-radius: 4px;
-    font-size: 10px;
+    border-radius: 3px;
+    font-size: 12px;
     color: #333;
+    max-width: 260px;
 }
