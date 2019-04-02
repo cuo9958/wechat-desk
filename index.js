@@ -16,7 +16,7 @@ function createWindow() {
         center: true,   //居中
         minWidth: 300,   //最小宽度
         resizable: false,    //是否可以改变尺寸
-        maximizable: false,  //是否可以最大化
+        // maximizable: false,  //是否可以最大化
         skipTaskbar: true,   //是否在任务栏中显示
         title: 'loading',    //标题
         // icon:'',        //icon
