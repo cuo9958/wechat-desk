@@ -11,8 +11,7 @@ export default class extends React.PureComponent {
         </div>
     }
     componentDidMount() {
-        // this.isShow(this.props.qrcode);
-        this.isShow('adwadw');
+        this.isShow(this.props.qrcode);
     }
 
     componentWillReceiveProps(pp) {
