@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
 import { Input, Button } from 'antd';
-import Scroll from 'react-custom-scroll';
 
 export default class extends React.PureComponent {
 
@@ -15,14 +14,14 @@ export default class extends React.PureComponent {
     render() {
         return <div id="content">
             <div className="content_msg">
-                <Scroll keepAtBottom={true} heightRelativeToParent="400px">
+                <div className="scroll" ref="scroll">
                     {this.state.list.map((item, index) => <div key={index}>
                         {item}
                     </div>)}
-                </Scroll>
+                </div>
             </div>
             <div className="content_entry">
-                <Input.TextArea className="txts" ref="txts" onPressEnter={this.entry.bind(this)} onChange={this.onChange.bind(this)}></Input.TextArea>
+                <Input.TextArea value={this.state.txts} className="txts" ref="txts" onPressEnter={this.entry.bind(this)} onChange={this.onChange.bind(this)}></Input.TextArea>
                 <Button onClick={this.entry.bind(this)} className="enter">Enter</Button>
             </div>
         </div>
@@ -34,8 +33,13 @@ export default class extends React.PureComponent {
         });
     }
     entry(e) {
+        e.stopPropagation();
+        e.preventDefault();
         this.setState({
-            list: this.state.list.concat(this.state.txts)
+            list: this.state.list.concat(this.state.txts),
+            txts: ''
+        }, () => {
+            this.refs.scroll.scrollTop = this.refs.scroll.scrollHeight;
         });
     }
 }

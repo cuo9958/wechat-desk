@@ -1,6 +1,6 @@
 #main {
     display: flex;
-
+    overflow: hidden;
 }
 
 /*loading样式*/
@@ -124,6 +124,11 @@
     overflow: hidden;
 }
 
+#content .content_msg .scroll {
+    overflow-y: scroll;
+    height: 440px;
+}
+
 #content .content_entry {
     height: 100px;
     border-top: solid 1px #ddd;
@@ -138,7 +143,8 @@
     outline: none;
     resize: none;
 }
-#content .content_entry .txts:focus{
+
+#content .content_entry .txts:focus {
     box-shadow: none;
 }
 

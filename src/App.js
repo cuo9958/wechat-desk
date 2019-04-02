@@ -29,7 +29,7 @@ class App extends Component {
                     <Rooms list={this.state.list} />
                     <Message />
                 </div>
-                <Button onClick={this.click.bind(this)}>ateadw</Button>
+                {/* <Button onClick={this.click.bind(this)}>ateadw</Button> */}
             </Fragment>
         );
     }

@@ -8,7 +8,7 @@ function createWindow() {
     // 创建浏览器窗口。
     win = new BrowserWindow({
         width: 800,
-        height: 600,
+        height: 622,
         show: false,    //不显示
         center: true,   //居中
         minWidth: 300,   //最小宽度
