@@ -1,17 +1,22 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Button, Spin } from 'antd';
-import 'antd/dist/antd.css';
 
+import Loading from './plugin/loading';
 
 class App extends Component {
     render() {
         return (
             <div className="App">
-                <Button onClick={this.click.bind(this)}>Button</Button>
-                <Spin />
+                <Loading />
             </div>
         );
+    }
+
+    componentDidMount() {
+        window.ipc.on('window.ready', (event, arg) => {
+            console.log(arg) // prints "pong"
+        })
     }
 
     click() {

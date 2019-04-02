@@ -5,13 +5,13 @@ const BrowserWindow = electron.BrowserWindow;
 const ipcMain = electron.ipcMain;
 
 ipcMain.on('asynchronous-message', (event, arg) => {
-  console.log(arg) // prints "ping"
-  event.sender.send('asynchronous-reply', 'pong')
+    console.log(arg) // prints "ping"
+    event.sender.send('asynchronous-reply', 'pong')
 })
 
 ipcMain.on('synchronous-message', (event, arg) => {
-  console.log(arg) // prints "ping"
-  event.returnValue = 'pong'
+    console.log(arg) // prints "ping"
+    event.returnValue = 'pong'
 })
 // 保持对window对象的全局引用，如果不这么做的话，当JavaScript对象被
 // 垃圾回收的时候，window对象将会自动的关闭
@@ -47,6 +47,7 @@ function createWindow() {
 
     win.once('ready-to-show', () => {
         win.show()
+        win.webContents.send('window.ready', 'whoooooooh!')
     })
     // 当 window 被关闭，这个事件会被触发。
     win.on('closed', () => {
