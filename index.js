@@ -7,8 +7,6 @@ const BrowserWindow = electron.BrowserWindow;
 // 垃圾回收的时候，window对象将会自动的关闭
 let win
 
-console.log(process.env)
-
 function createWindow() {
     // 创建浏览器窗口。
     win = new BrowserWindow({
