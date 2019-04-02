@@ -1,20 +1,24 @@
 {
-  "name": "wechat_robot",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "start": "node app.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git@gitlab.corp.daling.com:dal_fe/wechat_robot.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "MIT",
-  "dependencies": {
-    "file-box": "^0.8.27",
-    "wechaty": "^0.22.6"
-  }
+    "name": "wechat_robot",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "node app.js",
+        "dev": "electron ."
+    },
+    "repository": {
+        "type": "git",
+        "url": "git@gitlab.corp.daling.com:dal_fe/wechat_robot.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "MIT",
+    "dependencies": {
+        "file-box": "^0.8.27",
+        "wechaty": "^0.22.6"
+    },
+    "devDependencies": {
+        "electron": "^4.1.3"
+    }
 }
