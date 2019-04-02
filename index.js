@@ -7,6 +7,8 @@ const BrowserWindow = electron.BrowserWindow;
 // 垃圾回收的时候，window对象将会自动的关闭
 let win
 
+console.log(process.env)
+
 function createWindow() {
     // 创建浏览器窗口。
     win = new BrowserWindow({
@@ -25,8 +27,12 @@ function createWindow() {
     })
 
     // 然后加载应用的 index.html。
-    // win.loadFile('view/index.html')
-    win.loadURL('http://127.0.0.1:3000')
+    if (process.env.NODE_ENV === 'dev') {
+        win.loadURL('http://127.0.0.1:3000')
+    } else {
+        win.loadFile('build/index.html')
+    }
+
 
     // 打开开发者工具
     win.webContents.openDevTools()
