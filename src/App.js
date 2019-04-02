@@ -11,7 +11,7 @@ class App extends Component {
         super(props);
         this.state = {
             loading: true,
-            qrcode: ''
+            qrcode: '',
         }
     }
 
@@ -36,11 +36,17 @@ class App extends Component {
         window.ipc.on('login', (event, arg) => {
             this.setState({ qrcode: '' });
         });
+        window.ipc.on('message', (event, arg) => {
+            console.log("消息", arg)
+        });
+        window.ipc.on('rooms', (event, arg) => {
+            console.log("房间", arg)
+        });
     }
 
     click() {
         console.log("点击")
-        window.ipc.send('test', 'ping')
+        window.ipc.send('rooms', 'ping')
     }
 }
 

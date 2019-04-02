@@ -12,7 +12,7 @@ module.exports = class {
 
     //启动
     ready() {
-        ipcMain.on('test', this.test.bind(this));
+        // ipcMain.on('test', this.test.bind(this));
         this.webContents.send('ready');
     }
 
@@ -26,4 +26,5 @@ module.exports = class {
     send(key, args) {
         this.webContents.send(key, args);
     }
+
 }
