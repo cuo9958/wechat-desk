@@ -2,7 +2,7 @@
     "name": "wechat_robot",
     "version": "1.0.0",
     "description": "微信机器人值守",
-    "main": "index.js",
+    "main": "app.js",
     "homepage": "./",
     "scripts": {
         "start": "node scripts/start.js",

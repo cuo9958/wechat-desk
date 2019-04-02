@@ -9,6 +9,7 @@ class App extends Component {
         return (
             <div className="App">
                 <Loading />
+                <Button onClick={this.click.bind(this)}>ateadw</Button>
             </div>
         );
     }
@@ -20,7 +21,8 @@ class App extends Component {
     }
 
     click() {
-        window.ipc.send('asynchronous-message', 'ping')
+        console.log("点击")
+        window.ipc.send('test', 'ping')
     }
 }
 
