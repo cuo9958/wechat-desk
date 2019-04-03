@@ -3,3 +3,4 @@ dist/
 build/
 .vscode/
 wechat.memory-card.json
+package-lock.json
