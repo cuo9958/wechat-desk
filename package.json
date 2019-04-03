@@ -9,7 +9,7 @@
     "dev": "cross-env NODE_ENV=dev electron .",
     "test": "cross-env NODE_ENV=prod electron .",
     "build": "node scripts/build.js",
-    "build:app": "lectron-builder"
+    "build:app": "electron-builder"
   },
   "repository": {
     "type": "git",
