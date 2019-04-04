@@ -44,4 +44,10 @@ export default class extends React.PureComponent {
             this.refs.scroll.scrollTop = this.refs.scroll.scrollHeight;
         });
     }
+    addMessage(obj) {
+        console.log("收到消息", obj)
+        this.setState({
+            list: this.state.list.concat(obj)
+        });
+    }
 }

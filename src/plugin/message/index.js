@@ -17,7 +17,7 @@ export default class extends React.PureComponent {
                 产品技术中心群(288)
                 <Button onClick={this.setting.bind(this)} icon="setting"></Button>
             </header>
-            {!this.state.iset && <Content />}
+            {!this.state.iset && <Content ref="content" />}
             {this.state.iset && <Setting />}
         </div>
     }
@@ -26,5 +26,10 @@ export default class extends React.PureComponent {
         this.setState({
             iset: !this.state.iset
         });
+    }
+    addMessage(obj) {
+        if (this.refs.content) {
+            this.refs.content.addMessage(obj);
+        }
     }
 }

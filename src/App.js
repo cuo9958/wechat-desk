@@ -21,12 +21,12 @@ class App extends Component {
     render() {
         return (
             <Fragment>
-                {/* {this.state.loading && <Loading />} */}
+                {this.state.loading && <Loading />}
                 <Scan qrcode={this.state.qrcode} />
                 <div id="main">
                     <Setting />
                     <Rooms list={this.state.list} />
-                    <Message />
+                    <Message ref="message" />
                 </div>
                 {/* <Button onClick={this.click.bind(this)}>ateadw</Button> */}
             </Fragment>
@@ -49,6 +49,9 @@ class App extends Component {
         });
         window.ipc.on('message', (event, arg) => {
             console.log("消息", arg)
+            if (this.refs.message) {
+                this.refs.message.addMessage(arg);
+            }
         });
         window.ipc.on('rooms', (event, arg) => {
             console.log("房间", arg)
