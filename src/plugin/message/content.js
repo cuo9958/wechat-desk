@@ -17,7 +17,7 @@ export default class extends React.PureComponent {
             <div className="content_msg">
                 <div className="scroll" ref="scroll">
                     {this.state.list.map((item, index) => <div key={index}>
-                        <Msg txt={item} />
+                        <Msg data={item} />
                     </div>)}
                 </div>
             </div>
@@ -37,15 +37,16 @@ export default class extends React.PureComponent {
         e.stopPropagation();
         e.preventDefault();
         if (this.state.txts == '') return;
-        this.setState({
-            list: this.state.list.concat(this.state.txts),
-            txts: ''
-        }, () => {
-            this.refs.scroll.scrollTop = this.refs.scroll.scrollHeight;
-        });
+        // this.setState({
+        //     list: this.state.list.concat(this.state.txts),
+        //     txts: ''
+        // }, () => {
+        //     this.refs.scroll.scrollTop = this.refs.scroll.scrollHeight;
+        // });
     }
     addMessage(obj) {
         console.log("收到消息", obj)
+        if (obj.room.id == '') return;
         this.setState({
             list: this.state.list.concat(obj)
         });

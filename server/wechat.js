@@ -50,22 +50,41 @@ module.exports = class {
     login() {
         this.msg.send("login")
     }
-    logout(){
+    logout() {
         this.msg.send("logout")
     }
 
     //消息
     message(message) {
         const room = message.room();
-        console.log(room)
-        this.msg.send("message", message);
+        const concat = message.from();
+        const text = message.text();
+        // const to = message.to();
+
+        console.log(concat)
+
+        const obj = {
+            from: {
+                id: concat.id,
+                avatar: concat.payload.avatar,
+                friend: concat.payload.friend,
+                gender: concat.payload.gender,
+                name: concat.payload.name,
+            },
+            room: {
+                id: room.id,
+                memberIdList: room.payload.memberIdList,
+                topic: room.payload.topic
+            },
+            text
+        }
+        this.msg.send("message", obj);
     }
 
     //获取房间列表
     async rooms() {
-        console.log(this)
         const roomList = await this.bot.Room.findAll();
-        console.log(roomList)
+        // console.log(roomList)
         this.msg.send("rooms", roomList)
     }
 }
