@@ -1,5 +1,5 @@
-import React from 'react';
-import { Input, Button } from 'antd';
+import React, { Fragment } from 'react';
+import { Input } from 'antd';
 import Msg from './msg';
 
 export default class extends React.PureComponent {
@@ -16,9 +16,9 @@ export default class extends React.PureComponent {
         return <div id="content">
             <div className="content_msg">
                 <div className="scroll" ref="scroll">
-                    {this.state.list.map((item, index) => <div key={index}>
+                    {this.state.list.map((item, index) => <Fragment key={index}>
                         <Msg data={item} />
-                    </div>)}
+                    </Fragment>)}
                 </div>
             </div>
             <div className="content_entry">
@@ -37,16 +37,14 @@ export default class extends React.PureComponent {
         e.stopPropagation();
         e.preventDefault();
         if (this.state.txts == '') return;
-        // this.setState({
-        //     list: this.state.list.concat(this.state.txts),
-        //     txts: ''
-        // }, () => {
-        //     this.refs.scroll.scrollTop = this.refs.scroll.scrollHeight;
-        // });
+        window.ipc.send('msg', this.props.id, this.state.txts)
+        this.setState({
+            txts: ''
+        });
     }
     addMessage(obj) {
-        console.log("收到消息", obj)
-        if (obj.room.id == '') return;
+        if (!obj.room) return;
+        if (obj.room.id === '') return;
         this.setState({
             list: this.state.list.concat(obj)
         });

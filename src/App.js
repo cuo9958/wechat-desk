@@ -26,7 +26,7 @@ class App extends Component {
                 <div id="main">
                     <Setting />
                     <Rooms list={this.state.list} />
-                    <Message ref="message" />
+                    {this.state.list.length > 0 && <Message data={this.state.list[0]} ref="message" />}
                 </div>
                 {/* <Button onClick={this.click.bind(this)}>ateadw</Button> */}
             </Fragment>

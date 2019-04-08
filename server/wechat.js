@@ -26,6 +26,7 @@ module.exports = class {
         this.bot.on('logout', this.logout.bind(this));
 
         ipcMain.on('rooms', this.rooms.bind(this));
+        ipcMain.on('msg', this.onmsg.bind(this));
 
         await this.bot.start();
 
@@ -56,14 +57,15 @@ module.exports = class {
 
     //消息
     message(message) {
-        const room = message.room();
+
         const concat = message.from();
         const text = message.text();
-        // const to = message.to();
+        const self = message.self();
+
 
         console.log(concat)
 
-        const obj = {
+        let obj = {
             from: {
                 id: concat.id,
                 avatar: concat.payload.avatar,
@@ -71,13 +73,28 @@ module.exports = class {
                 gender: concat.payload.gender,
                 name: concat.payload.name,
             },
-            room: {
+            text,
+            self
+        }
+        const room = message.room();
+        if (room) {
+            obj.room = {
                 id: room.id,
                 memberIdList: room.payload.memberIdList,
                 topic: room.payload.topic
-            },
-            text
+            }
         }
+        const to = message.to();
+        if (to) {
+            obj.to = {
+                id: to.id,
+                avatar: to.payload.avatar,
+                friend: to.payload.friend,
+                gender: to.payload.gender,
+                name: to.payload.name,
+            }
+        }
+
         this.msg.send("message", obj);
     }
 
@@ -86,5 +103,10 @@ module.exports = class {
         const roomList = await this.bot.Room.findAll();
         // console.log(roomList)
         this.msg.send("rooms", roomList)
+    }
+    //发送消息
+    onmsg(e, id, txt) {
+        const room = this.bot.Room.load(id);
+        room.say(txt);
     }
 }

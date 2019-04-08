@@ -8,6 +8,7 @@ export default class extends React.PureComponent {
 
             </div>
             <div className="menu2">
+                <Button icon="setting" ghost></Button>
                 <Button icon="logout" ghost></Button>
             </div>
         </div>
