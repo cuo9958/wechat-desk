@@ -91,6 +91,7 @@
     "files":[
         "package.json",
         "app.js",
+        "server/",
         "build/"
     ],
     "mac": {
