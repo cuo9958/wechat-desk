@@ -1,5 +1,6 @@
 const Wechaty = require('wechaty').Wechaty;
 const { ipcMain } = require('electron');
+const Filter = require('./filter');
 // import { FileBox } from 'file-box'
 
 
@@ -94,7 +95,7 @@ module.exports = class {
                 name: to.payload.name,
             }
         }
-
+        Filter.check(this.bot, obj);
         this.msg.send("message", obj);
     }
 

@@ -221,6 +221,7 @@
 
 .msg.self .nickname {
     padding-right: 5px;
+    text-align: right;
 }
 
 .msg .txt {
