@@ -28,6 +28,7 @@ function createWindow() {
         win.webContents.openDevTools()
     } else {
         win.loadFile('build/index.html')
+        win.webContents.openDevTools()
     }
     //加载完成
     win.once('ready-to-show', () => {
