@@ -57,6 +57,15 @@ class App extends Component {
             console.log("房间", arg)
             this.setState({ list: arg });
         });
+        window.ipc.on('wechat.ready', (event, arg) => {
+            console.log("wechat.ready")
+        });
+        window.ipc.on('wechat.error', (event, arg) => {
+            console.log("error", arg)
+        });
+        window.ipc.on('heartbeat', (event, arg) => {
+            console.log("heartbeat", arg)
+        });
         setInterval(() => {
             window.ipc.send('rooms');
         }, 5000);

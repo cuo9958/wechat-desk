@@ -25,6 +25,8 @@ module.exports = class {
         this.bot.on('login', this.login.bind(this));
         this.bot.on('message', this.message.bind(this));
         this.bot.on('logout', this.logout.bind(this));
+        this.bot.on('ready', this.onready.bind(this));
+        this.bot.on('error', this.error.bind(this));
 
         ipcMain.on('rooms', this.rooms.bind(this));
         ipcMain.on('msg', this.onmsg.bind(this));
@@ -109,5 +111,18 @@ module.exports = class {
     onmsg(e, id, txt) {
         const room = this.bot.Room.load(id);
         room.say(txt);
+    }
+
+    onready(){
+        console.log("wechat.ready");
+        this.msg.send("wechat.ready")
+    }
+    error(e){
+        console.log(e)
+        this.msg.send("wechat.error", e.message,e)
+    }
+    heartbeat(data){
+        console.log(data)
+        this.msg.send("heartbeat", data)
     }
 }
